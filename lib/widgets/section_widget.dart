@@ -32,6 +32,7 @@ class _SectionWidgetState extends State<SectionWidget> {
       description: widget.model.description,
       child: ListView.builder(
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: widget.model.fields.length,
         itemBuilder: (context, index) {
           final model = widget.model.fields[index];

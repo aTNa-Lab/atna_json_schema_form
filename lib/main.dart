@@ -49,6 +49,20 @@ class _MyHomePageState extends State<MyHomePage> {
           "enum": ["atai", "btai", "ctai"],
           "enumNames": ['1', '2']
         },
+        "firstName2": {
+          "type": "string",
+          "title": "First name",
+          "description": "Test Description",
+          "enum": ["atai", "btai", "ctai"],
+          "enumNames": ['1', '2']
+        },
+        "firstName3": {
+          "type": "string",
+          "title": "First name",
+          "description": "Test Description",
+          "enum": ["atai", "btai", "ctai"],
+          "enumNames": ['1', '2']
+        },
         "lastName": {"type": "string", "description": "Test Description", "title": "Last name"},
         "telephone": {"type": "string", "title": "Telephone", "minLength": 10},
         "test-section": {
@@ -80,8 +94,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: FormBuilder(
-          model: model,
+        child: SingleChildScrollView(
+          child: FormBuilder(
+            model: model,
+          ),
         ),
       ),
     );
