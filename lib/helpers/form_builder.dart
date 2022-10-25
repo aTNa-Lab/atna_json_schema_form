@@ -1,12 +1,6 @@
-import 'package:atna_json_schema_form/models/section.dart';
-import 'package:atna_json_schema_form/widgets/section_widget.dart';
-import 'package:flutter/cupertino.dart';
-
-import 'models/array.dart';
-import 'models/field.dart';
-import 'models/text_field.dart';
-import 'widgets/array_widget.dart';
-import 'widgets/text_widget.dart';
+import 'package:atna_json_schema_form/models/models.dart';
+import 'package:atna_json_schema_form/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 
 class FormBuilder extends StatelessWidget {
   final List<Field> fields;

@@ -1,6 +1,6 @@
-import 'package:atna_json_schema_form/field_wrapper.dart';
-import 'package:atna_json_schema_form/models/text_field.dart';
-import 'package:atna_json_schema_form/models/types.dart';
+import 'package:atna_json_schema_form/helpers/helpers.dart';
+import 'package:atna_json_schema_form/models/models.dart';
+import 'package:atna_json_schema_form/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class TextWidget extends StatefulWidget {

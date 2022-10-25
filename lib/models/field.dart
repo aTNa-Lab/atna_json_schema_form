@@ -1,4 +1,4 @@
-import 'package:atna_json_schema_form/models/types.dart';
+import 'package:atna_json_schema_form/helpers/helpers.dart';
 
 abstract class Field {
   String? id;
@@ -16,4 +16,6 @@ abstract class Field {
   });
 
   String? get fieldTitle => title ?? id;
+
+  set setId(String id) => this.id = id;
 }

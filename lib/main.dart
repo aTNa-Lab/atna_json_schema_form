@@ -1,7 +1,7 @@
-import 'package:atna_json_schema_form/form_builder.dart';
+import 'package:atna_json_schema_form/helpers/helpers.dart';
+import 'package:atna_json_schema_form/models/models.dart';
 import 'package:flutter/material.dart';
 
-import 'models/section.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,6 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
           "enum": ["atai", "btai", "ctai"],
           "enumNames": ['1', '2']
         },
+        "listOfStrings": {
+          "type": "array",
+          "title": "A list of strings",
+          "items": {
+            "type": "string",
+            "default": "bazinga"
+          }
+        },
         "fixedItemsList": {
           "type": "array",
           "title": "A list of fixed items",
@@ -93,11 +101,18 @@ class _MyHomePageState extends State<MyHomePage> {
     var ui = {
       "firstName": {"ui:widget": "select"},
       "lastName": {"ui:widget": "textarea"},
+      "fixedItemsList": {
+        "items": [
+          {
+            "ui:widget": "textarea"
+          },
+          {
+            "ui:widget": "select"
+          }
+        ],
+      },
     };
-    var test = Section.fromJson(json, ui);
-    model = test;
-    var f = test.fields.last as Section;
-    print(f.fields);
+    model = Section.fromJson(json, ui);
     super.initState();
   }
 

@@ -1,7 +1,7 @@
-import 'package:atna_json_schema_form/field_wrapper.dart';
-import 'package:atna_json_schema_form/form_builder.dart';
-import 'package:atna_json_schema_form/models/section.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:atna_json_schema_form/helpers/helpers.dart';
+import 'package:atna_json_schema_form/models/models.dart';
+import 'package:atna_json_schema_form/widgets/widgets.dart';
+import 'package:flutter/material.dart';
 
 class SectionWidget extends StatefulWidget {
   final Section model;
