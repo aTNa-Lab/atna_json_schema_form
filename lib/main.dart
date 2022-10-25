@@ -49,6 +49,21 @@ class _MyHomePageState extends State<MyHomePage> {
           "enum": ["atai", "btai", "ctai"],
           "enumNames": ['1', '2']
         },
+        "fixedItemsList": {
+          "type": "array",
+          "title": "A list of fixed items",
+          "items": [
+            {
+              "title": "A string value",
+              "type": "string",
+              "default": "lorem ipsum"
+            },
+            {
+              "title": "a boolean value",
+              "type": "string"
+            }
+          ],
+        },
         "firstName2": {
           "type": "string",
           "title": "First name",
@@ -96,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: FormBuilder(
-            model: model,
+            fields: model.fields,
           ),
         ),
       ),
