@@ -28,7 +28,12 @@ class FieldWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget? titleWidget = title != null ? Text(title!) : null;
+    Widget? titleWidget = title != null
+        ? Text(
+            title!,
+            style: _type == WrapperType.section ? Theme.of(context).textTheme.headline6 : null,
+          )
+        : null;
     Widget? descriptionWidget = description != null ? Text(description!) : null;
 
     if (_type == WrapperType.section) {

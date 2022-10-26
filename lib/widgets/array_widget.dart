@@ -15,42 +15,48 @@ class ArrayWidget extends StatefulWidget {
 class _ArrayWidgetState extends State<ArrayWidget> {
   List<Field> fields = [];
 
+  void addItemToArray() {
+    final field = widget.model.itemType!;
+    field.setId = fields.length.toString();
+    setState(() {
+      fields.add(field);
+    });
+  }
+
+  void removeItemFromArray() {
+    setState(() {
+      fields.removeLast();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget child;
     if (widget.model.isFixed) {
-      return FormBuilder(fields: widget.model.items!);
+      child = FormBuilder(fields: widget.model.items!);
     } else {
-      return FieldWrapper.section(
-        title: widget.model.fieldTitle,
-        description: widget.model.description,
-        child: Column(
-          children: [
-            FormBuilder(fields: fields),
-            Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    final field = widget.model.itemType!;
-                    field.setId = fields.length.toString();
-                    setState(() {
-                      fields.add(field);
-                    });
-                  },
-                  child: const Text('+'),
-                ),
-                ElevatedButton(
-                  onPressed: fields.isNotEmpty ? () {
-                    setState(() {
-                      fields.removeLast();
-                    });
-                  } : null,
-                  child: const Text('-'),
-                ),
-              ],
-            )
-          ],
-        ),
+      child = Column(
+        children: [
+          FormBuilder(fields: fields),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: addItemToArray,
+                child: const Text('+'),
+              ),
+              ElevatedButton(
+                onPressed: fields.isNotEmpty ? removeItemFromArray : null,
+                child: const Text('-'),
+              ),
+            ],
+          )
+        ],
       );
     }
+    return FieldWrapper.section(
+      title: widget.model.fieldTitle,
+      description: widget.model.description,
+      child: child,
+    );
   }
 }

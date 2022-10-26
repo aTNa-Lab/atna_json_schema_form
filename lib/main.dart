@@ -1,5 +1,5 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
 import 'package:atna_json_schema_form/models/models.dart';
+import 'package:atna_json_schema_form/widgets/section_widget.dart';
 import 'package:flutter/material.dart';
 
 
@@ -125,9 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-          child: FormBuilder(
-            fields: model.fields,
-          ),
+          child: SectionWidget(model: model),
         ),
       ),
     );
