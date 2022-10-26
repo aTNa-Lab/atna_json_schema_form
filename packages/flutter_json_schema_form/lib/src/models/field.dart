@@ -1,4 +1,4 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
+import '../helpers/helpers.dart';
 
 abstract class Field {
   String? id;

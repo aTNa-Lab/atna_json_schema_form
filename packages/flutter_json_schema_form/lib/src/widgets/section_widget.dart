@@ -1,7 +1,8 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
-import 'package:atna_json_schema_form/models/models.dart';
-import 'package:atna_json_schema_form/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+
+import '../helpers/helpers.dart';
+import '../models/models.dart';
+import 'widgets.dart';
 
 class SectionWidget extends StatefulWidget {
   final Section model;

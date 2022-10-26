@@ -1,5 +1,5 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
-import 'package:atna_json_schema_form/models/models.dart';
+import '../helpers/helpers.dart';
+import 'models.dart';
 
 class Array extends Field {
   final bool isFixed;

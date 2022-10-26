@@ -1,6 +1,7 @@
-import 'package:atna_json_schema_form/helpers/types.dart';
-import 'package:atna_json_schema_form/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../models/models.dart';
+import 'helpers.dart';
 
 class FormSerializer {
   static List<Field> mapJsonToFields(Map<String, dynamic> schema, Map<String, dynamic>? uiSchema) {

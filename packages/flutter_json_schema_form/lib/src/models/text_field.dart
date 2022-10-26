@@ -1,7 +1,7 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
-import 'package:atna_json_schema_form/models/models.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/helpers.dart';
+import 'models.dart';
 
 class TextFieldModel extends Field {
   List? enumOptions;

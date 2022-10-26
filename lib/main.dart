@@ -1,7 +1,5 @@
-import 'package:atna_json_schema_form/models/models.dart';
-import 'package:atna_json_schema_form/widgets/section_widget.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_json_schema_form/flutter_json_schema_form.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,26 +15,26 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  late final Section model;
+class _HomePageState extends State<HomePage> {
+  late final Map<String, dynamic> formData;
+  late final Map<String, dynamic> json;
+  late final Map<String, dynamic> ui;
 
   @override
   void initState() {
-    var json = {
+    json = {
       "title": "A registration form",
       "description": "A simple form examplae.",
       "type": "object",
@@ -52,24 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
         "listOfStrings": {
           "type": "array",
           "title": "A list of strings",
-          "items": {
-            "type": "string",
-            "default": "bazinga"
-          }
+          "items": {"type": "string", "default": "bazinga"}
         },
         "fixedItemsList": {
           "type": "array",
           "title": "A list of fixed items",
           "items": [
-            {
-              "title": "A string value",
-              "type": "string",
-              "default": "lorem ipsum"
-            },
-            {
-              "title": "a boolean value",
-              "type": "string"
-            }
+            {"title": "A string value", "type": "string", "default": "lorem ipsum"},
+            {"title": "a boolean value", "type": "string"}
           ],
         },
         "firstName2": {
@@ -90,42 +78,36 @@ class _MyHomePageState extends State<MyHomePage> {
         "telephone": {"type": "string", "title": "Telephone", "minLength": 10},
         "test-section": {
           "properties": {
-            "test1": {
-              "type": "string"
-            }
+            "test1": {"type": "string"}
           }
         }
       }
     };
 
-    var ui = {
+    ui = {
       "firstName": {"ui:widget": "select"},
       "lastName": {"ui:widget": "textarea"},
       "fixedItemsList": {
         "items": [
-          {
-            "ui:widget": "textarea"
-          },
-          {
-            "ui:widget": "select"
-          }
+          {"ui:widget": "textarea"},
+          {"ui:widget": "select"}
         ],
       },
     };
-    model = Section.fromJson(json, ui);
+    formData = {'firstName2': 'test'};
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: SectionWidget(model: model),
+        child: FlutterJsonSchemaForm(
+          schema: json,
+          uiSchema: ui,
+          formData: formData,
         ),
       ),
     );

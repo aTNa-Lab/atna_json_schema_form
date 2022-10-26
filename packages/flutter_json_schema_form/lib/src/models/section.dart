@@ -1,6 +1,7 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
-import 'package:atna_json_schema_form/models/models.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../helpers/helpers.dart';
+import 'models.dart';
 
 class Section extends Field {
   final List<Field> fields;

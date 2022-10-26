@@ -1,7 +1,10 @@
-import 'package:atna_json_schema_form/helpers/helpers.dart';
-import 'package:atna_json_schema_form/models/models.dart';
-import 'package:atna_json_schema_form/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../helpers/helpers.dart';
+import '../models/models.dart';
+import '../bloc/bloc.dart' as bloc;
+import 'widgets.dart';
 
 class TextWidget extends StatefulWidget {
   final TextFieldModel model;
@@ -45,8 +48,14 @@ class _TextWidgetState extends State<TextWidget> {
         maxLines: 10,
       );
     } else {
-      field = TextFormField(
-        decoration: decoration,
+      field = BlocBuilder<bloc.FormBloc, bloc.FormState>(
+        builder: (context, state) {
+          final value = state.formData[widget.model.id];
+          return TextFormField(
+            initialValue: value ?? '',
+            decoration: decoration,
+          );
+        },
       );
     }
 
