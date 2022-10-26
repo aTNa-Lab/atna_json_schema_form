@@ -28,7 +28,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final Map<String, dynamic> formData;
+  late Map<String, dynamic> _formData;
   late final Map<String, dynamic> json;
   late final Map<String, dynamic> ui;
 
@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
         ],
       },
     };
-    formData = {'firstName2': 'test'};
+    _formData = {'firstName2': 'test'};
     super.initState();
   }
 
@@ -104,10 +104,22 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: FlutterJsonSchemaForm(
-          schema: json,
-          uiSchema: ui,
-          formData: formData,
+        child: Column(
+          children: [
+            Expanded(
+              child: FlutterJsonSchemaForm(
+                schema: json,
+                uiSchema: ui,
+                formData: _formData,
+                onChange: (formData) {
+                  setState(() {
+                    _formData = formData;
+                  });
+                },
+              ),
+            ),
+            Text(_formData.toString()),
+          ],
         ),
       ),
     );
