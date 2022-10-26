@@ -26,7 +26,6 @@ class FormBuilder extends StatelessWidget {
       itemCount: fields.length,
       itemBuilder: (context, index) {
         final model = fields[index];
-        print(model.id);
         return _mapModelToWidget(model);
       },
     );

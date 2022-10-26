@@ -16,8 +16,9 @@ class _SectionWidgetState extends State<SectionWidget> {
   @override
   Widget build(BuildContext context) {
     return FieldWrapper.section(
-        title: widget.model.fieldTitle,
-        description: widget.model.description,
-        child: FormBuilder(fields: widget.model.fields));
+      title: widget.model.fieldTitle,
+      description: widget.model.description,
+      child: FormBuilder(fields: widget.model.fields),
+    );
   }
 }

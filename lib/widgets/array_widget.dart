@@ -1,6 +1,6 @@
-
 import 'package:atna_json_schema_form/helpers/helpers.dart';
 import 'package:atna_json_schema_form/models/models.dart';
+import 'package:atna_json_schema_form/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ArrayWidget extends StatefulWidget {
@@ -20,32 +20,36 @@ class _ArrayWidgetState extends State<ArrayWidget> {
     if (widget.model.isFixed) {
       return FormBuilder(fields: widget.model.items!);
     } else {
-      return Column(
-        children: [
-          FormBuilder(fields: fields),
-          Row(
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  final field = widget.model.itemType!;
-                  field.setId = fields.length.toString();
-                  setState(() {
-                    fields.add(field);
-                  });
-                },
-                child: const Text('+'),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    fields.removeLast();
-                  });
-                },
-                child: const Text('-'),
-              ),
-            ],
-          )
-        ],
+      return FieldWrapper.section(
+        title: widget.model.fieldTitle,
+        description: widget.model.description,
+        child: Column(
+          children: [
+            FormBuilder(fields: fields),
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    final field = widget.model.itemType!;
+                    field.setId = fields.length.toString();
+                    setState(() {
+                      fields.add(field);
+                    });
+                  },
+                  child: const Text('+'),
+                ),
+                ElevatedButton(
+                  onPressed: fields.isNotEmpty ? () {
+                    setState(() {
+                      fields.removeLast();
+                    });
+                  } : null,
+                  child: const Text('-'),
+                ),
+              ],
+            )
+          ],
+        ),
       );
     }
   }

@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         "firstName2": {
           "type": "string",
-          "title": "First name",
+          "title": "First name 2",
           "description": "Test Description",
           "enum": ["atai", "btai", "ctai"],
           "enumNames": ['1', '2']

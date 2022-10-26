@@ -1,3 +1,3 @@
 export 'types.dart';
-export 'utilities.dart';
+export 'form_serializer.dart';
 export 'form_builder.dart';

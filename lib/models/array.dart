@@ -6,16 +6,33 @@ class Array extends Field {
   final List<Field>? items;
   final Field? itemType;
 
-  Array({
+  Array.dynamic({
     required String id,
     String? title,
     String? description,
     FieldType? fieldType,
     WidgetType? widgetType,
-    required this.isFixed,
-    this.items,
     this.itemType,
-  }) : super(
+  })  : isFixed = false,
+        items = null,
+        super(
+          id: id,
+          title: title,
+          description: description,
+          fieldType: fieldType,
+          widgetType: widgetType,
+        );
+
+  Array.fixed({
+    required String id,
+    String? title,
+    String? description,
+    FieldType? fieldType,
+    WidgetType? widgetType,
+    required this.items,
+  })  : itemType = null,
+        isFixed = true,
+        super(
           id: id,
           title: title,
           description: description,

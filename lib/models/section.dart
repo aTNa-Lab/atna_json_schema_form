@@ -23,7 +23,7 @@ class Section extends Field {
       title: json['title'],
       description: json['description'],
       type: $enumDecodeNullable(typeEnumMap, json['type']),
-      fields: Utilities.mapJsonToFields(json['properties'], ui),
+      fields: FormSerializer.mapJsonToFields(json['properties'], ui),
     );
   }
 }

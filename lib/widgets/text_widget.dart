@@ -37,10 +37,18 @@ class _TextWidgetState extends State<TextWidget> {
             });
           },
           items: widget.model.dropdownItems);
+    } else if (widget.model.widgetType == WidgetType.textarea) {
+      field = TextFormField(
+        decoration: decoration,
+        // expands: true,
+        minLines: 4,
+        maxLines: 10,
+      );
+    } else {
+      field = TextFormField(
+        decoration: decoration,
+      );
     }
-    field = TextFormField(
-      decoration: decoration,
-    );
 
     return FieldWrapper(
       title: widget.model.fieldTitle,
