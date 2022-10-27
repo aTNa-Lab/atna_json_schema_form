@@ -90,7 +90,6 @@ class _HomePageState extends State<HomePage> {
       "fixedItemsList": {
         "items": [
           {"ui:widget": "textarea"},
-          {"ui:widget": "select"}
         ],
       },
     };
