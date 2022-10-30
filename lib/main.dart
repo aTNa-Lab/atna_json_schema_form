@@ -77,6 +77,8 @@ class _HomePageState extends State<HomePage> {
         "lastName": {"type": "string", "description": "Test Description", "title": "Last name"},
         "telephone": {"type": "string", "title": "Telephone", "minLength": 10},
         "test-section": {
+          "title": "123",
+          "type": "object",
           "properties": {
             "test1": {"type": "string"}
           }
@@ -93,7 +95,7 @@ class _HomePageState extends State<HomePage> {
         ],
       },
     };
-    _formData = {'firstName2': 'test'};
+    _formData = {'firstName2': 'test', '0': 'atai', 'lastName': 'test value in textarea', 'firstName': 'atai'};
     super.initState();
   }
 
@@ -124,3 +126,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+// TODO: Add default value calculation.
+// TODO: Add dependency support.
+// TODO: Fix saving values of arrays in formData.
+// TODO: Add required fields validation.
+// TODO: Add more widgets.
+// TODO: Add submit button.
+// TODO: Add validations for widgets.
