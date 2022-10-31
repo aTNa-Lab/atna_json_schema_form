@@ -96,8 +96,7 @@ class _HomePageState extends State<HomePage> {
         ],
       },
     };
-    // _formData = {'firstName2': 'test', '0': 'atai', 'lastName': 'test value in textarea', 'firstName': 'atai'};
-    _formData = {};
+    _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     super.initState();
   }
 
@@ -113,7 +112,7 @@ class _HomePageState extends State<HomePage> {
               child: FlutterJsonSchemaForm(
                 schema: json,
                 uiSchema: ui,
-                // formData: _formData,
+                formData: _formData,
                 onChange: (formData) {
                   setState(() {
                     _formData = formData;
