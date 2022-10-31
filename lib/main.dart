@@ -57,7 +57,8 @@ class _HomePageState extends State<HomePage> {
           "title": "A list of fixed items",
           "items": [
             {"title": "A string value", "type": "string", "default": "lorem ipsum"},
-            {"title": "a boolean value", "type": "string"}
+            {"title": "a boolean value", "type": "string"},
+            {"title": "third item", "type": "string"}
           ],
         },
         "firstName2": {
@@ -95,7 +96,8 @@ class _HomePageState extends State<HomePage> {
         ],
       },
     };
-    _formData = {'firstName2': 'test', '0': 'atai', 'lastName': 'test value in textarea', 'firstName': 'atai'};
+    // _formData = {'firstName2': 'test', '0': 'atai', 'lastName': 'test value in textarea', 'firstName': 'atai'};
+    _formData = {};
     super.initState();
   }
 
@@ -111,7 +113,7 @@ class _HomePageState extends State<HomePage> {
               child: FlutterJsonSchemaForm(
                 schema: json,
                 uiSchema: ui,
-                formData: _formData,
+                // formData: _formData,
                 onChange: (formData) {
                   setState(() {
                     _formData = formData;
