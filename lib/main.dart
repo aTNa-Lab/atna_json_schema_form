@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
         "listOfStrings": {
           "type": "array",
           "title": "A list of strings",
-          "items": {"type": "string", "default": "bazinga"}
+          "items": {"type": "string", "title": "test item"}
         },
         "fixedItemsList": {
           "type": "array",
@@ -132,7 +132,6 @@ class _HomePageState extends State<HomePage> {
 
 // TODO: Add default value calculation.
 // TODO: Add dependency support.
-// TODO: Fix saving values of arrays in formData.
 // TODO: Add required fields validation.
 // TODO: Add more widgets.
 // TODO: Add submit button.
