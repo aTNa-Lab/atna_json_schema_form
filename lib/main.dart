@@ -46,6 +46,9 @@ class _HomePageState extends State<HomePage> {
           "title": "Person",
           "type": "object",
           "properties": {
+            "test": {
+              "type": "number",
+            },
             "Do you have any pets?": {
               "type": "string",
               "enum": [
@@ -102,7 +105,6 @@ class _HomePageState extends State<HomePage> {
 
     ui = {
       "person": {
-        "Do you have any pets?": {"ui:widget": "select"},
         "How old is your pet?": {"ui:widget": "select"}
       },
     };
