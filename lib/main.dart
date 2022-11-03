@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                     "Do you have any pets?": {
                       "enum": ["Yes: More than one"]
                     },
-                    "Do you want to get rid of any?": {"type": "boolean"}
+                    "Do you want to get rid of any?": {"type": "string"}
                   },
                   "required": ["Do you want to get rid of any?"]
                 }
@@ -144,7 +144,6 @@ class _HomePageState extends State<HomePage> {
 }
 
 // TODO: Add default value calculation.
-// TODO: Add dependency support.
 // TODO: Add required fields validation.
 // TODO: Add more widgets.
 // TODO: Add submit button.
