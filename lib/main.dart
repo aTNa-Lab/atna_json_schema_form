@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_json_schema_form/flutter_json_schema_form.dart';
 
@@ -29,74 +31,86 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Map<String, dynamic> _formData;
-  late final Map<String, dynamic> json;
+  late final Map<String, dynamic> schema;
   late final Map<String, dynamic> ui;
 
   @override
   void initState() {
-    json = {
+    schema = {
       "title": "A registration form",
-      "description": "A simple form examplae.",
+      "description": "A simple form example.",
       "type": "object",
       "required": ["firstName", "lastName"],
       "properties": {
-        "firstName": {
-          "type": "string",
-          "title": "First name",
-          "description": "Test Description",
-          "enum": ["atai", "btai", "ctai"],
-          "enumNames": ['1', '2']
-        },
-        "listOfStrings": {
-          "type": "array",
-          "title": "A list of strings",
-          "items": {"type": "string", "title": "test item"}
-        },
-        "fixedItemsList": {
-          "type": "array",
-          "title": "A list of fixed items",
-          "items": [
-            {"title": "A string value", "type": "string", "default": "lorem ipsum"},
-            {"title": "a boolean value", "type": "string"},
-            {"title": "third item", "type": "string"}
-          ],
-        },
-        "firstName2": {
-          "type": "string",
-          "title": "First name 2",
-          "description": "Test Description",
-          "enum": ["atai", "btai", "ctai"],
-          "enumNames": ['1', '2']
-        },
-        "firstName3": {
-          "type": "string",
-          "title": "First name",
-          "description": "Test Description",
-          "enum": ["atai", "btai", "ctai"],
-          "enumNames": ['1', '2']
-        },
-        "lastName": {"type": "string", "description": "Test Description", "title": "Last name"},
-        "telephone": {"type": "string", "title": "Telephone", "minLength": 10},
-        "test-section": {
-          "title": "123",
+        "person": {
+          "title": "Person",
           "type": "object",
           "properties": {
-            "test1": {"type": "string"}
+            "Do you have any pets?": {
+              "type": "string",
+              "enum": [
+                "No",
+                "Yes: One",
+                "Yes: Two",
+                "Yes: More than one"
+              ],
+              "default": "No"
+            }
+          },
+          "required": ["Do you have any pets?"],
+          "dependencies": {
+            "Do you have any pets?": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "Do you have any pets?": {
+                      "enum": ["No"]
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "Do you have any pets?": {
+                      "enum": ["Yes: One", "Yes: Two"]
+                    },
+                    "How old is your pet?": {
+                      "type": "string",
+                      "enum": [
+                        '1',
+                        '2',
+                        '3',
+                      ]
+                    }
+                  },
+                  "required": ["How old is your pet?"]
+                },
+                {
+                  "properties": {
+                    "Do you have any pets?": {
+                      "enum": ["Yes: More than one"]
+                    },
+                    "Do you want to get rid of any?": {"type": "boolean"}
+                  },
+                  "required": ["Do you want to get rid of any?"]
+                }
+              ]
+            }
           }
         }
       }
     };
 
     ui = {
-      "firstName": {"ui:widget": "select"},
-      "lastName": {"ui:widget": "textarea"},
-      "fixedItemsList": {
-        "items": [
-          {"ui:widget": "textarea"},
-        ],
+      "person": {
+        "Do you have any pets?": {"ui:widget": "select"},
+        "How old is your pet?": {"ui:widget": "select"}
       },
     };
-    _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
+    // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
+    _formData = {
+      "person": {"Do you have any pets?": "Yes: One", "How old is your pet?": null}
+    };
+    // _formData = {};
     super.initState();
   }
 
@@ -110,10 +124,11 @@ class _HomePageState extends State<HomePage> {
           children: [
             Expanded(
               child: FlutterJsonSchemaForm(
-                schema: json,
+                schema: schema,
                 uiSchema: ui,
                 formData: _formData,
                 onChange: (formData) {
+                  print(json.encode(formData));
                   setState(() {
                     _formData = formData;
                   });
@@ -127,7 +142,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
 
 // TODO: Add default value calculation.
 // TODO: Add dependency support.
