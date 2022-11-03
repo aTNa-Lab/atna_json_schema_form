@@ -46,8 +46,12 @@ class _HomePageState extends State<HomePage> {
           "title": "Person",
           "type": "object",
           "properties": {
+            "test_string": {
+              "type": "string",
+            },
             "test": {
-              "type": "number",
+              "type": "boolean",
+              "description": "This is sparta?"
             },
             "Do you have any pets?": {
               "type": "string",
@@ -77,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                       "enum": ["Yes: One", "Yes: Two"]
                     },
                     "How old is your pet?": {
-                      "type": "string",
+                      "type": "integer",
                       "enum": [
                         '1',
                         '2',
@@ -105,12 +109,13 @@ class _HomePageState extends State<HomePage> {
 
     ui = {
       "person": {
+        "test": {"ui:widget": "select"},
         "How old is your pet?": {"ui:widget": "select"}
       },
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
-      "person": {"Do you have any pets?": "Yes: One", "How old is your pet?": null}
+      "person": {"Do you have any pets?": "Yes: One"}
     };
     // _formData = {};
     super.initState();
