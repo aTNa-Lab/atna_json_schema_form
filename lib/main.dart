@@ -46,21 +46,41 @@ class _HomePageState extends State<HomePage> {
           "title": "Person",
           "type": "object",
           "properties": {
-            "test_string": {
-              "type": "string",
-            },
             "test": {
-              "type": "boolean",
-              "description": "This is sparta?"
+              "type": "object",
+              "properties": {
+                "test2": {
+                  "type": "object",
+                  "properties": {
+                    "multipleChoicesList": {
+                      "type": "array",
+                      "title": "A multiple choices list",
+                      "items": {
+                        "type": "string",
+                        "enum": [
+                          "foo",
+                          "bar",
+                          "fuzz",
+                          "qux"
+                        ]
+                      },
+                      "uniqueItems": true
+                    },
+                    "testFinal": {
+                      "type": "string",
+                      "title": "Final nested item"
+                    }
+                  }
+                }
+              }
             },
+            // "test_string": {
+            //   "type": "string",
+            // },
+            // "test": {"type": "boolean", "description": "This is sparta?"},
             "Do you have any pets?": {
               "type": "string",
-              "enum": [
-                "No",
-                "Yes: One",
-                "Yes: Two",
-                "Yes: More than one"
-              ],
+              "enum": ["No", "Yes: One", "Yes: Two", "Yes: More than one"],
               "default": "No"
             }
           },
@@ -110,13 +130,17 @@ class _HomePageState extends State<HomePage> {
     ui = {
       "person": {
         "test": {"ui:widget": "select"},
-        "How old is your pet?": {"ui:widget": "select"}
+        // "How old is your pet?": {"ui:widget": "select"}
       },
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
       "person": {"Do you have any pets?": "Yes: One"}
     };
+    
+    // final newData  = updateDeeply(['person', 'How old is your pet?'], _formData, (prevValue) => 1);
+    // print('after ${newData.runtimeType}');
+    // _formData = Map.from(newData);
     // _formData = {};
     super.initState();
   }
