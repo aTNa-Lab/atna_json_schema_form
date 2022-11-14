@@ -37,27 +37,65 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     schema = {
-      "title": "A registration form",
-      "description": "A simple form example.",
+      "title": "Person",
       "type": "object",
-      "required": [
-        "firstName",
-        "lastName"
-      ],
       "properties": {
-        "firstName": {
+        "Do you have any pets?": {
           "type": "string",
-          "title": "First name",
-          "default": "Chuck"
-        },
-        "lastName": {
-          "type": "string",
-          "title": "Last name"
-        },
-        "telephone": {
-          "type": "string",
-          "title": "Telephone",
-          "minLength": 10
+          "enum": [
+            "No",
+            "Yes: One",
+            "Yes: More than one"
+          ],
+          "default": "No"
+        }
+      },
+      "required": [
+        "Do you have any pets?"
+      ],
+      "dependencies": {
+        "Do you have any pets?": {
+          "oneOf": [
+            {
+              "properties": {
+                "Do you have any pets?": {
+                  "enum": [
+                    "No"
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "Do you have any pets?": {
+                  "enum": [
+                    "Yes: One"
+                  ]
+                },
+                "How old is your pet?": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "How old is your pet?"
+              ]
+            },
+            {
+              "properties": {
+                "Do you have any pets?": {
+                  "enum": [
+                    "Yes: More than one"
+                  ]
+                },
+                "Do you want to get rid of any?": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "Do you want to get rid of any?"
+              ]
+            }
+          ]
         }
       }
     };
