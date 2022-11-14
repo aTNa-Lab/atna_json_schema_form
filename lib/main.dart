@@ -37,68 +37,67 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     schema = {
-      "title": "Person",
+      "title": "A registration form",
+      "description": "A simple form example.",
       "type": "object",
+      "required": ["firstName", "lastName"],
       "properties": {
-        "Do you have any pets?": {
-          "type": "string",
-          "enum": [
-            "No",
-            "Yes: One",
-            "Yes: More than one"
-          ],
-          "default": "No"
-        }
-      },
-      "required": [
-        "Do you have any pets?"
-      ],
-      "dependencies": {
-        "Do you have any pets?": {
-          "oneOf": [
-            {
-              "properties": {
-                "Do you have any pets?": {
-                  "enum": [
-                    "No"
-                  ]
-                }
-              }
-            },
-            {
-              "properties": {
-                "Do you have any pets?": {
-                  "enum": [
-                    "Yes: One"
-                  ]
-                },
-                "How old is your pet?": {
-                  "type": "number"
-                }
-              },
-              "required": [
-                "How old is your pet?"
-              ]
-            },
-            {
-              "properties": {
-                "Do you have any pets?": {
-                  "enum": [
-                    "Yes: More than one"
-                  ]
-                },
-                "Do you want to get rid of any?": {
-                  "type": "boolean"
-                }
-              },
-              "required": [
-                "Do you want to get rid of any?"
-              ]
-            }
-          ]
+        "firstName": {"type": "string", "title": "First name", "default": "Chuck"},
+        "lastName": {"type": "number", "default": 123, "title": "Last name"},
+        "telephone": {
+          "type": "array",
+          "title": "Telephone",
+          "items": {
+            "title": "test",
+            "type": "string",
+            "default": "123",
+          }
         }
       }
     };
+    // schema = {
+    //   "title": "Person",
+    //   "type": "object",
+    //   "properties": {
+    //     "Do you have any pets?": {
+    //       "type": "string",
+    //       "enum": ["No", "Yes: One", "Yes: More than one"],
+    //       "default": "No"
+    //     }
+    //   },
+    //   "required": ["Do you have any pets?"],
+    //   "dependencies": {
+    //     "Do you have any pets?": {
+    //       "oneOf": [
+    //         {
+    //           "properties": {
+    //             "Do you have any pets?": {
+    //               "enum": ["No"]
+    //             }
+    //           }
+    //         },
+    //         {
+    //           "properties": {
+    //             "Do you have any pets?": {
+    //               "enum": ["Yes: One"]
+    //             },
+    //             "How old is your pet?": {"type": "number"}
+    //           },
+    //           "required": ["How old is your pet?"]
+    //         },
+    //         {
+    //           "properties": {
+    //             "Do you have any pets?": {
+    //               "enum": ["Yes: More than one"]
+    //             },
+    //             "Do you want to get rid of any?": {"type": "boolean"}
+    //           },
+    //           "required": ["Do you want to get rid of any?"]
+    //         }
+    //       ]
+    //     }
+    //   }
+    // };
     // schema = {
     //   "title": "A registration form",
     //   "description": "A simple form example.",
@@ -190,16 +189,21 @@ class _HomePageState extends State<HomePage> {
     // };
 
     ui = {
+      // "telephone": {"ui:widget": "radio"},
       "person": {
         "test": {"ui:widget": "select"},
         // "How old is your pet?": {"ui:widget": "select"}
       },
+      "Do you want to get rid of any?": {"ui:widget": "radio"},
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
-      "person": {"Do you have any pets?": "Yes: One"}
+      // "firstName": "Chuck",
+      // "person": {"Do you have any pets?": "Yes: One"},
+      // "Do you have any pets?": "Yes: More than one",
+      // "Do you want to get rid of any?": true,
     };
-    
+
     // final newData  = updateDeeply(['person', 'How old is your pet?'], _formData, (prevValue) => 1);
     // print('after ${newData.runtimeType}');
     // _formData = Map.from(newData);
@@ -241,3 +245,4 @@ class _HomePageState extends State<HomePage> {
 // TODO: Add more widgets.
 // TODO: Add submit button.
 // TODO: Add validations for widgets.
+// TODO: Remove value from FormData if null or if isn't dependent
