@@ -40,92 +40,116 @@ class _HomePageState extends State<HomePage> {
       "title": "A registration form",
       "description": "A simple form example.",
       "type": "object",
-      "required": ["firstName", "lastName"],
+      "required": [
+        "firstName",
+        "lastName"
+      ],
       "properties": {
-        "person": {
-          "title": "Person",
-          "type": "object",
-          "properties": {
-            "test": {
-              "type": "object",
-              "properties": {
-                "test2": {
-                  "type": "object",
-                  "properties": {
-                    "multipleChoicesList": {
-                      "type": "array",
-                      "title": "A multiple choices list",
-                      "items": {
-                        "type": "string",
-                        "enum": [
-                          "foo",
-                          "bar",
-                          "fuzz",
-                          "qux"
-                        ]
-                      },
-                      "uniqueItems": true
-                    },
-                    "testFinal": {
-                      "type": "string",
-                      "title": "Final nested item"
-                    }
-                  }
-                }
-              }
-            },
-            // "test_string": {
-            //   "type": "string",
-            // },
-            // "test": {"type": "boolean", "description": "This is sparta?"},
-            "Do you have any pets?": {
-              "type": "string",
-              "enum": ["No", "Yes: One", "Yes: Two", "Yes: More than one"],
-              "default": "No"
-            }
-          },
-          "required": ["Do you have any pets?"],
-          "dependencies": {
-            "Do you have any pets?": {
-              "oneOf": [
-                {
-                  "properties": {
-                    "Do you have any pets?": {
-                      "enum": ["No"]
-                    }
-                  }
-                },
-                {
-                  "properties": {
-                    "Do you have any pets?": {
-                      "enum": ["Yes: One", "Yes: Two"]
-                    },
-                    "How old is your pet?": {
-                      "type": "integer",
-                      "enum": [
-                        '1',
-                        '2',
-                        '3',
-                      ]
-                    }
-                  },
-                  "required": ["How old is your pet?"]
-                },
-                {
-                  "properties": {
-                    "Do you have any pets?": {
-                      "enum": ["Yes: More than one"]
-                    },
-                    "Do you want to get rid of any?": {"type": "string"}
-                  },
-                  "required": ["Do you want to get rid of any?"]
-                }
-              ]
-            }
-          }
+        "firstName": {
+          "type": "string",
+          "title": "First name",
+          "default": "Chuck"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last name"
+        },
+        "telephone": {
+          "type": "string",
+          "title": "Telephone",
+          "minLength": 10
         }
       }
     };
+    // schema = {
+    //   "title": "A registration form",
+    //   "description": "A simple form example.",
+    //   "type": "object",
+    //   "required": ["firstName", "lastName"],
+    //   "properties": {
+    //     "person": {
+    //       "title": "Person",
+    //       "type": "object",
+    //       "properties": {
+    //         "test": {
+    //           "type": "object",
+    //           "properties": {
+    //             "test2": {
+    //               "type": "object",
+    //               "properties": {
+    //                 "multipleChoicesList": {
+    //                   "type": "array",
+    //                   "title": "A multiple choices list",
+    //                   "items": {
+    //                     "type": "string",
+    //                     "enum": [
+    //                       "foo",
+    //                       "bar",
+    //                       "fuzz",
+    //                       "qux"
+    //                     ]
+    //                   },
+    //                   "uniqueItems": true
+    //                 },
+    //                 "testFinal": {
+    //                   "title": "Final nested item"
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         },
+    //         // "test_string": {
+    //         //   "type": "string",
+    //         // },
+    //         // "test": {"type": "boolean", "description": "This is sparta?"},
+    //         "Do you have any pets?": {
+    //           "type": "string",
+    //           "enum": ["No", "Yes: One", "Yes: Two", "Yes: More than one"],
+    //           "default": "No"
+    //         }
+    //       },
+    //       "required": ["Do you have any pets?"],
+    //       "dependencies": {
+    //         "Do you have any pets?": {
+    //           "oneOf": [
+    //             {
+    //               "properties": {
+    //                 "Do you have any pets?": {
+    //                   "enum": ["No"]
+    //                 }
+    //               }
+    //             },
+    //             {
+    //               "properties": {
+    //                 "Do you have any pets?": {
+    //                   "enum": ["Yes: One", "Yes: Two"]
+    //                 },
+    //                 "How old is your pet?": {
+    //                   "type": "integer",
+    //                   "enum": [
+    //                     '1',
+    //                     '2',
+    //                     '3',
+    //                   ]
+    //                 }
+    //               },
+    //               "required": ["How old is your pet?"]
+    //             },
+    //             {
+    //               "properties": {
+    //                 "Do you have any pets?": {
+    //                   "enum": ["Yes: More than one"]
+    //                 },
+    //                 "Do you want to get rid of any?": {"type": "string"}
+    //               },
+    //               "required": ["Do you want to get rid of any?"]
+    //             }
+    //           ]
+    //         }
+    //       }
+    //     }
+    //   }
+    // };
 
     ui = {
       "person": {
