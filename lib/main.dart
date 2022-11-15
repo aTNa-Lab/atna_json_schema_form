@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
-      // "firstName": "Chuck",
+      "firstName": "Test",
       // "person": {"Do you have any pets?": "Yes: One"},
       // "Do you have any pets?": "Yes: More than one",
       // "Do you want to get rid of any?": true,
@@ -240,7 +240,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// TODO: Add default value calculation.
 // TODO: Add required fields validation.
 // TODO: Add more widgets.
 // TODO: Add submit button.
