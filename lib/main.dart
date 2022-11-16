@@ -36,68 +36,68 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // schema = {
-    //   "title": "A registration form",
-    //   "description": "A simple form example.",
-    //   "type": "object",
-    //   "required": ["firstName", "lastName"],
-    //   "properties": {
-    //     "firstName": {"type": "string", "title": "First name", "default": "Chuck"},
-    //     "lastName": {"type": "number", "default": 123, "title": "Last name"},
-    //     "telephone": {
-    //       "type": "array",
-    //       "title": "Telephone",
-    //       "items": {
-    //         "title": "test",
-    //         "type": "string",
-    //         "default": "123",
-    //       }
-    //     }
-    //   }
-    // };
     schema = {
-      "title": "Person",
+      "title": "A registration form",
+      "description": "A simple form example.",
       "type": "object",
+      "required": ["firstName", "lastName"],
       "properties": {
-        "Do you have any pets?": {
-          "type": "string",
-          "enum": ["No", "Yes: One", "Yes: More than one"],
-          "default": "No"
-        }
-      },
-      "required": ["Do you have any pets?"],
-      "dependencies": {
-        "Do you have any pets?": {
-          "oneOf": [
-            {
-              "properties": {
-                "Do you have any pets?": {
-                  "enum": ["No"]
-                }
-              }
-            },
-            {
-              "properties": {
-                "Do you have any pets?": {
-                  "enum": ["Yes: One"]
-                },
-                "How old is your pet?": {"type": "integer"}
-              },
-              "required": ["How old is your pet?"]
-            },
-            {
-              "properties": {
-                "Do you have any pets?": {
-                  "enum": ["Yes: More than one"]
-                },
-                "Do you want to get rid of any?": {"type": "boolean"}
-              },
-              "required": ["Do you want to get rid of any?"]
-            }
-          ]
+        "firstName": {"type": "string", "title": "First name", "default": "Chuck"},
+        "lastName": {"type": "number", "default": 123, "title": "Last name"},
+        "telephone": {
+          "type": "array",
+          "title": "Telephone",
+          "items": {
+            "title": "test",
+            "type": "string",
+            "default": "123",
+          }
         }
       }
     };
+    // schema = {
+    //   "title": "Person",
+    //   "type": "object",
+    //   "properties": {
+    //     "Do you have any pets?": {
+    //       "type": "string",
+    //       "enum": ["No", "Yes: One", "Yes: More than one"],
+    //       "default": "No"
+    //     }
+    //   },
+    //   "required": ["Do you have any pets?"],
+    //   "dependencies": {
+    //     "Do you have any pets?": {
+    //       "oneOf": [
+    //         {
+    //           "properties": {
+    //             "Do you have any pets?": {
+    //               "enum": ["No"]
+    //             }
+    //           }
+    //         },
+    //         {
+    //           "properties": {
+    //             "Do you have any pets?": {
+    //               "enum": ["Yes: One"]
+    //             },
+    //             "How old is your pet?": {"type": "integer"}
+    //           },
+    //           "required": ["How old is your pet?"]
+    //         },
+    //         {
+    //           "properties": {
+    //             "Do you have any pets?": {
+    //               "enum": ["Yes: More than one"]
+    //             },
+    //             "Do you want to get rid of any?": {"type": "boolean"}
+    //           },
+    //           "required": ["Do you want to get rid of any?"]
+    //         }
+    //       ]
+    //     }
+    //   }
+    // };
     // schema = {
     //   "title": "A registration form",
     //   "description": "A simple form example.",
