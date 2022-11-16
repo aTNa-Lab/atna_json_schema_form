@@ -241,7 +241,6 @@ class _HomePageState extends State<HomePage> {
 }
 
 // TODO: Add required fields validation.
-// TODO: Add more widgets.
-// TODO: Add submit button.
+// TODO: Add more widgets. Use widgets from FlutterFormBuilder.
 // TODO: Add validations for widgets.
-// TODO: Remove value from FormData if null or if isn't dependent
+// TODO: Add ui:order, ui:options.
