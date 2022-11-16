@@ -40,10 +40,32 @@ class _HomePageState extends State<HomePage> {
       "title": "A registration form",
       "description": "A simple form example.",
       "type": "object",
-      "required": ["firstName", "lastName"],
+      "required": ["firstName", "lastName", "How old is your pet?", 'test'],
       "properties": {
-        "firstName": {"type": "string", "title": "First name", "default": "Chuck"},
-        "lastName": {"type": "number", "default": 123, "title": "Last name"},
+        "firstName": {
+          "type": "string",
+          "title": "First name",
+          // "default": "Chuck",
+        },
+        "lastName": {
+          "type": "number",
+          // "default": 123,
+          "title": "Last name",
+        },
+        "How old is your pet?": {
+          "type": "integer",
+          "default": 1,
+          "enum": [
+            '1',
+            '2',
+            '3',
+          ],
+          "enumNames": ['One', 'Two', 'Three']
+        },
+        'test': {
+          'type': 'boolean',
+          'title': 'Test'
+        },
         "telephone": {
           "type": "array",
           "title": "Telephone",
@@ -194,11 +216,14 @@ class _HomePageState extends State<HomePage> {
         "test": {"ui:widget": "select"},
         // "How old is your pet?": {"ui:widget": "select"}
       },
+      "test": {"ui:widget": "radio"},
+      "How old is your pet?": {"ui:widget": "radio"},
       "Do you want to get rid of any?": {"ui:widget": "radio"},
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
       "firstName": "Test",
+      "test": false,
       // "person": {"Do you have any pets?": "Yes: One"},
       // "Do you have any pets?": "Yes: More than one",
       // "Do you want to get rid of any?": true,
