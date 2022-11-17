@@ -74,6 +74,11 @@ class _HomePageState extends State<HomePage> {
             "type": "string",
             "default": "123",
           }
+          // "items": [
+          //   {"title": "test", "type": "string"},
+          //   {"title": "test", "type": "string"},
+          //   {"title": "test", "type": "string"},
+          // ]
         }
       }
     };
@@ -223,6 +228,7 @@ class _HomePageState extends State<HomePage> {
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
       "firstName": "Test",
+      "telephone": ["a", "b", "c"]
       // "test": false,
       // "person": {"Do you have any pets?": "Yes: One"},
       // "Do you have any pets?": "Yes: More than one",
@@ -270,3 +276,5 @@ class _HomePageState extends State<HomePage> {
 // TODO: Add WidgetModel and replace WidgetType wit WidgetModel.
 // TODO: Refactor dispose method.
 // TODO: Remove BlocBuilder From SectionField.
+// TODO: Replace schema keys with constants.
+// TODO: Add disabled.
