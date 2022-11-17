@@ -62,10 +62,7 @@ class _HomePageState extends State<HomePage> {
           ],
           "enumNames": ['One', 'Two', 'Three']
         },
-        'test': {
-          'type': 'boolean',
-          'title': 'Test'
-        },
+        'test': {'type': 'boolean', 'title': 'Test'},
         "telephone": {
           "type": "array",
           "title": "Telephone",
@@ -79,7 +76,89 @@ class _HomePageState extends State<HomePage> {
           //   {"title": "test", "type": "string"},
           //   {"title": "test", "type": "string"},
           // ]
+        },
+        "person": {
+          "title": "Person",
+          "type": "object",
+          "properties": {
+            // "test": {
+            //   "type": "object",
+            //   "properties": {
+            //     "test2": {
+            //       "type": "object",
+            //       "properties": {
+            //         "multipleChoicesList": {
+            //           "type": "array",
+            //           "title": "A multiple choices list",
+            //           "items": {
+            //             "type": "string",
+            //             "enum": [
+            //               "foo",
+            //               "bar",
+            //               "fuzz",
+            //               "qux"
+            //             ]
+            //           },
+            //           "uniqueItems": true
+            //         },
+            //         "testFinal": {
+            //           "title": "Final nested item"
+            //         }
+            //       }
+            //     }
+            //   }
+            // },
+            // "test_string": {
+            //   "type": "string",
+            // },
+            // "test": {"type": "boolean", "description": "This is sparta?"},
+            "Do you have any pets?": {
+              "type": "string",
+              "enum": ["No", "Yes: One", "Yes: Two", "Yes: More than one"],
+              "default": "No"
+            }
+          },
+          "required": ["Do you have any pets?"],
+          "dependencies": {
+            "Do you have any pets?": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "Do you have any pets?": {
+                      "enum": ["No"]
+                    }
+                  }
+                },
+                {
+                  "properties": {
+                    "Do you have any pets?": {
+                      "enum": ["Yes: One", "Yes: Two"]
+                    },
+                    "How old is your pet?": {
+                      "type": "integer",
+                      "enum": [
+                        '1',
+                        '2',
+                        '3',
+                      ]
+                    }
+                  },
+                  "required": ["How old is your pet?"]
+                },
+                {
+                  "properties": {
+                    "Do you have any pets?": {
+                      "enum": ["Yes: More than one"]
+                    },
+                    "Do you want to get rid of any?": {"type": "string"}
+                  },
+                  "required": ["Do you want to get rid of any?"]
+                }
+              ]
+            }
+          }
         }
+
       }
     };
     // schema = {
@@ -217,6 +296,12 @@ class _HomePageState extends State<HomePage> {
 
     ui = {
       // "telephone": {"ui:widget": "radio"},
+      "ui:order": [
+        "telephone",
+        "test",
+        "*",
+        "firstName",
+      ],
       "person": {
         "test": {"ui:widget": "select"},
         // "How old is your pet?": {"ui:widget": "select"}
@@ -275,6 +360,5 @@ class _HomePageState extends State<HomePage> {
 // TODO: Add ui:order, ui:options.
 // TODO: Add WidgetModel and replace WidgetType wit WidgetModel.
 // TODO: Refactor dispose method.
-// TODO: Remove BlocBuilder From SectionField.
 // TODO: Replace schema keys with constants.
 // TODO: Add disabled.
