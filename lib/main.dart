@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
         },
         "How old is your pet?": {
           "type": "integer",
-          "default": 1,
+          // "default": 1,
           "enum": [
             '1',
             '2',
@@ -216,14 +216,14 @@ class _HomePageState extends State<HomePage> {
         "test": {"ui:widget": "select"},
         // "How old is your pet?": {"ui:widget": "select"}
       },
-      "test": {"ui:widget": "radio"},
-      "How old is your pet?": {"ui:widget": "radio"},
+      // "test": {"ui:widget": "radio"},
+      // "How old is your pet?": {"ui:widget": "radio"},
       "Do you want to get rid of any?": {"ui:widget": "radio"},
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
       "firstName": "Test",
-      "test": false,
+      // "test": false,
       // "person": {"Do you have any pets?": "Yes: One"},
       // "Do you have any pets?": "Yes: More than one",
       // "Do you want to get rid of any?": true,
@@ -265,7 +265,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// TODO: Add required fields validation.
 // TODO: Add more widgets. Use widgets from FlutterFormBuilder.
-// TODO: Add validations for widgets.
 // TODO: Add ui:order, ui:options.
+// TODO: Add WidgetModel and replace WidgetType wit WidgetModel.
+// TODO: Refactor dispose method.
+// TODO: Remove BlocBuilder From SectionField.
