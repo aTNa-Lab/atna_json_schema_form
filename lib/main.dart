@@ -1,7 +1,8 @@
 import 'dart:convert';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_json_schema_form/flutter_json_schema_form.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +15,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      locale: const Locale('ru'),
+      supportedLocales: const [
+        Locale('ru'),
+        Locale('en'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        FormBuilderLocalizations.delegate,
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -40,12 +51,11 @@ class _HomePageState extends State<HomePage> {
       "title": "A registration form",
       "description": "A simple form example.",
       "type": "object",
-      "required": ["firstName", "lastName", "How old is your pet?", 'test'],
+      "required": ["How old is your pet?", 'test'],
       "properties": {
         "firstName": {
-          "type": "string",
+          "type": "integer",
           "title": "First name",
-          "format": "date",
           // "default": "Chuck",
         },
         "lastName": {
@@ -297,12 +307,9 @@ class _HomePageState extends State<HomePage> {
 
     ui = {
       // "telephone": {"ui:widget": "radio"},
-      "firstName": {
-        // "ui:widget": "textarea",
-        "ui:options": {
-          "rows": 2
-        }
-      },
+      // "firstName": {
+      //   "ui:widget": "file",
+      // },
       "ui:order": [
         "telephone",
         "test",
@@ -319,7 +326,7 @@ class _HomePageState extends State<HomePage> {
     };
     // _formData = {'firstName2': 'test', 'firstName': 'atai', 'test-section': {'test1': 'section'}, 'fixedItemsList': [null, 'array']};
     _formData = {
-      "firstName": "Test",
+      // "firstName": "Test",
       "telephone": ["a", "b", "c"]
       // "test": false,
       // "person": {"Do you have any pets?": "Yes: One"},
