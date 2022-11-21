@@ -296,6 +296,9 @@ class _HomePageState extends State<HomePage> {
 
     ui = {
       // "telephone": {"ui:widget": "radio"},
+      "firstName": {
+        "ui:widget": "textarea",
+      },
       "ui:order": [
         "telephone",
         "test",
