@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         FormBuilderLocalizations.delegate,
       ],
@@ -307,14 +308,14 @@ class _HomePageState extends State<HomePage> {
 
     ui = {
       // "telephone": {"ui:widget": "radio"},
-      // "firstName": {
-      //   "ui:widget": "file",
-      // },
+      "firstName": {
+        "ui:widget": "file",
+      },
       "ui:order": [
+        "firstName",
         "telephone",
         "test",
         "*",
-        "firstName",
       ],
       "person": {
         "test": {"ui:widget": "select"},
