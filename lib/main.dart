@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
         "firstName": {
           "type": "string",
           "title": "First name",
+          "format": "date",
           // "default": "Chuck",
         },
         "lastName": {
@@ -297,7 +298,10 @@ class _HomePageState extends State<HomePage> {
     ui = {
       // "telephone": {"ui:widget": "radio"},
       "firstName": {
-        "ui:widget": "textarea",
+        // "ui:widget": "textarea",
+        "ui:options": {
+          "rows": 2
+        }
       },
       "ui:order": [
         "telephone",
