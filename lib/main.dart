@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
         "firstName": {
           "type": "integer",
           "title": "First name",
+          "description": "First name",
           // "default": "Chuck",
         },
         "lastName": {
@@ -66,6 +67,7 @@ class _HomePageState extends State<HomePage> {
         },
         "How old is your pet?": {
           "type": "integer",
+          "description": "A simple form example.",
           // "default": 1,
           "enum": [
             '1',
@@ -92,6 +94,7 @@ class _HomePageState extends State<HomePage> {
         "person": {
           "title": "Person",
           "type": "object",
+          "description": "A simple form example.",
           "properties": {
             // "test": {
             //   "type": "object",
