@@ -312,7 +312,7 @@ class _HomePageState extends State<HomePage> {
     ui = {
       // "telephone": {"ui:widget": "radio"},
       "firstName": {
-        "ui:widget": "file",
+        "ui:widget": "audio",
       },
       "ui:order": [
         "firstName",
