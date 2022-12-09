@@ -358,7 +358,7 @@ class _HomePageState extends State<HomePage> {
                 schema: schema,
                 uiSchema: ui,
                 formData: _formData,
-                onChange: (formData) {
+                onChange: (formData, path) {
                   print(json.encode(formData));
                   setState(() {
                     _formData = formData;
